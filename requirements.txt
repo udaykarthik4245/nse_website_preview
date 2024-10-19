@@ -1,0 +1,15 @@
+pandas
+matplotlib
+requests
+beautifulsoup4
+selenium
+requests
+openpyxl
+schedule
+streamlit
+shutil
+time
+csv
+os
+datetime
+zipfile
