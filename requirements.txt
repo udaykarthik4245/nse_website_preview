@@ -9,7 +9,3 @@ openpyxl
 schedule
 streamlit
 
-csv
-os
-datetime
-zipfile
