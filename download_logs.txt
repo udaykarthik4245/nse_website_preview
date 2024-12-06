@@ -1,0 +1,10 @@
+2024-12-06 07:49:55 - INFO - Download completed: C_VAR1_06122024_1.DAT
+2024-12-06 07:50:00 - INFO - Download completed: MF_VAR_06122024.csv
+2024-12-06 07:50:05 - INFO - Download completed: series_change.csv
+2024-12-06 07:50:10 - INFO - Download completed: eq_band_changes_06122024.csv
+2024-12-06 07:50:15 - INFO - Download completed: sme_bands_complete_06122024.csv
+2024-12-06 07:50:21 - INFO - Moved C_VAR1_06122024_1.DAT to C:\Users\udayk\OneDrive\AppData\Desktop\nse_report_github\downloads\2024-12-06\Reports(.dat).
+2024-12-06 07:50:21 - INFO - Moved eq_band_changes_06122024.csv to C:\Users\udayk\OneDrive\AppData\Desktop\nse_report_github\downloads\2024-12-06\Reports(.csv).
+2024-12-06 07:50:21 - INFO - Moved MF_VAR_06122024.csv to C:\Users\udayk\OneDrive\AppData\Desktop\nse_report_github\downloads\2024-12-06\Reports(.csv).
+2024-12-06 07:50:21 - INFO - Moved series_change.csv to C:\Users\udayk\OneDrive\AppData\Desktop\nse_report_github\downloads\2024-12-06\Reports(.csv).
+2024-12-06 07:50:21 - INFO - Moved sme_bands_complete_06122024.csv to C:\Users\udayk\OneDrive\AppData\Desktop\nse_report_github\downloads\2024-12-06\Reports(.csv).

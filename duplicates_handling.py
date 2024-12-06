@@ -7,6 +7,7 @@ def organize_files(download_dir):
     date_folder_path = os.path.join(download_dir, date_folder_name)
     os.makedirs(date_folder_path, exist_ok=True)
 
+
     csv_folder = os.path.join(date_folder_path, 'csv_folder')
     dat_folder = os.path.join(date_folder_path, 'dat_folder')
     os.makedirs(csv_folder, exist_ok=True)
