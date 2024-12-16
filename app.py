@@ -9,6 +9,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import WebDriverException, NoSuchElementException, TimeoutException
@@ -73,7 +75,8 @@ def setup_driver(download_directory):
     }
     chrome_options.add_experimental_option("prefs", prefs)
     service = Service(CHROME_DRIVER_PATH)
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+
     return driver
 
 def is_download_complete(file_name, download_dir):
