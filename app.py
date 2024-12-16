@@ -97,8 +97,9 @@ def setup_driver(download_directory):
             break
     else:
         raise FileNotFoundError("Chrome binary not found in default locations.")
+      
 
-     prefs = {
+    prefs = {
         "download.default_directory": download_directory,
         "download.prompt_for_download": False,
         "download.directory_upgrade": True,
