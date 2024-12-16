@@ -5,6 +5,20 @@ import zipfile
 import shutil
 import logging
 from datetime import datetime
+
+
+import os
+import subprocess
+
+def install_chrome():
+    if not os.path.exists("/usr/bin/google-chrome"):
+        subprocess.run([
+            "wget", "-O", "/tmp/google-chrome-stable_current_amd64.deb",
+            "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+        ])
+        subprocess.run(["apt-get", "install", "-y", "-f", "/tmp/google-chrome-stable_current_amd64.deb"])
+        os.remove("/tmp/google-chrome-stable_current_amd64.deb")
+install_chrome()
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -82,8 +96,8 @@ def setup_driver(download_directory):
     })
 
     # Return the Chrome WebDriver with dynamic driver management
-    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
-
+    driver=webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    return driver
 # def setup_driver(download_directory):
 #     chrome_options = Options()
 #     chrome_options.add_argument("--no-sandbox")
