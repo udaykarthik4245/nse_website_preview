@@ -10,7 +10,9 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
-
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import WebDriverException, NoSuchElementException, TimeoutException
@@ -62,22 +64,42 @@ else:
 
 
 # Functions for Core Functionality
-def setup_driver(download_directory):
-    chrome_options = Options()
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("user-agent = your user agent")
-    prefs = {
-        "download.default_directory": download_directory,
-        "download.prompt_for_download": False,
-        "download.directory_upgrade": True,
-        "safebrowsing.enabled": True
-    }
-    chrome_options.add_experimental_option("prefs", prefs)
-    service = Service(CHROME_DRIVER_PATH)
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 
-    return driver
+
+
+def setup_driver(download_directory):
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')  # Run in headless mode
+    chrome_options.add_argument('--disable-gpu')  # Disable GPU acceleration
+    chrome_options.add_argument('--no-sandbox')  # Prevent sandboxing issues
+    chrome_options.add_argument('--disable-dev-shm-usage')  # Overcome shared memory issues
+    chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Avoid detection
+    chrome_options.add_experimental_option("prefs", {
+        "download.default_directory": download_directory,  # Set download directory
+        "download.prompt_for_download": False,  # Suppress download prompts
+        "download.directory_upgrade": True,
+        "safebrowsing.enabled": True,  # Enable safe browsing
+    })
+
+    # Return the Chrome WebDriver with dynamic driver management
+    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+
+# def setup_driver(download_directory):
+#     chrome_options = Options()
+#     chrome_options.add_argument("--no-sandbox")
+#     chrome_options.add_argument("--disable-dev-shm-usage")
+#     chrome_options.add_argument("user-agent = your user agent")
+#     prefs = {
+#         "download.default_directory": download_directory,
+#         "download.prompt_for_download": False,
+#         "download.directory_upgrade": True,
+#         "safebrowsing.enabled": True
+#     }
+#     chrome_options.add_experimental_option("prefs", prefs)
+#     service = Service(CHROME_DRIVER_PATH)
+#     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+
+#     return driver
 
 def is_download_complete(file_name, download_dir):
     file_path = os.path.join(download_dir, file_name)
