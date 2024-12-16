@@ -1,4 +1,4 @@
-
+webdriver-manager
 pandas
 matplotlib
 requests
