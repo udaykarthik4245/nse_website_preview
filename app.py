@@ -11,14 +11,14 @@ import os
 import subprocess
 
 def install_chrome():
-    if not os.path.exists("/usr/bin/google-chrome"):
-        subprocess.run([
-            "wget", "-O", "/tmp/google-chrome-stable_current_amd64.deb",
-            "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-        ])
-        subprocess.run(["apt-get", "install", "-y", "-f", "/tmp/google-chrome-stable_current_amd64.deb"])
-        os.remove("/tmp/google-chrome-stable_current_amd64.deb")
-install_chrome()
+#     if not os.path.exists("/usr/bin/google-chrome"):
+#         subprocess.run([
+#             "wget", "-O", "/tmp/google-chrome-stable_current_amd64.deb",
+#             "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
+#         ])
+#         subprocess.run(["apt-get", "install", "-y", "-f", "/tmp/google-chrome-stable_current_amd64.deb"])
+#         os.remove("/tmp/google-chrome-stable_current_amd64.deb")
+# install_chrome()
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
@@ -35,7 +35,7 @@ from mail import send_email_report
 # Constants
 BASE_DOWNLOAD_FOLDER = "downloads"
 LOG_FILE_PATH = "download_logs.txt"
-CHROME_DRIVER_PATH = "C:\\Users\\udayk\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+# CHROME_DRIVER_PATH = "C:\\Users\\udayk\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
 
 # Configure logging
 logging.basicConfig(filename=LOG_FILE_PATH, level=logging.INFO,
@@ -79,25 +79,54 @@ else:
 
 # Functions for Core Functionality
 
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 
 
 def setup_driver(download_directory):
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--headless')  # Run in headless mode
-    chrome_options.add_argument('--disable-gpu')  # Disable GPU acceleration
-    chrome_options.add_argument('--no-sandbox')  # Prevent sandboxing issues
-    chrome_options.add_argument('--disable-dev-shm-usage')  # Overcome shared memory issues
-    chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Avoid detection
-    chrome_options.add_experimental_option("prefs", {
-        "download.default_directory": download_directory,  # Set download directory
-        "download.prompt_for_download": False,  # Suppress download prompts
-        "download.directory_upgrade": True,
-        "safebrowsing.enabled": True,  # Enable safe browsing
-    })
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")  # Run without GUI (optional)
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    
+    # Update the path to your Chrome binary
+    chrome_binary_path = r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+    if not os.path.exists(chrome_binary_path):
+        raise FileNotFoundError(f"Chrome binary not found at: {chrome_binary_path}")
+    chrome_options.binary_location = chrome_binary_path
 
-    # Return the Chrome WebDriver with dynamic driver management
-    driver=webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+    # Set download preferences
+    prefs = {
+        "download.default_directory": download_directory,
+        "safebrowsing.enabled": True
+    }
+    chrome_options.add_experimental_option("prefs", prefs)
+
+    # Initialize the WebDriver
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     return driver
+
+
+
+# def setup_driver(download_directory):
+#     chrome_options = webdriver.ChromeOptions()
+#     chrome_options.add_argument('--headless')  # Run in headless mode
+#     chrome_options.add_argument('--disable-gpu')  # Disable GPU acceleration
+#     chrome_options.add_argument('--no-sandbox')  # Prevent sandboxing issues
+#     chrome_options.add_argument('--disable-dev-shm-usage')  # Overcome shared memory issues
+#     chrome_options.add_argument('--disable-blink-features=AutomationControlled')  # Avoid detection
+#     chrome_options.add_experimental_option("prefs", {
+#         "download.default_directory": download_directory,  # Set download directory
+#         "download.prompt_for_download": False,  # Suppress download prompts
+#         "download.directory_upgrade": True,
+#         "safebrowsing.enabled": True,  # Enable safe browsing
+#     })
+
+#     # Return the Chrome WebDriver with dynamic driver management
+#     driver=webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+#     return driver
 # def setup_driver(download_directory):
 #     chrome_options = Options()
 #     chrome_options.add_argument("--no-sandbox")
