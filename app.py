@@ -10,7 +10,7 @@ from datetime import datetime
 import os
 import subprocess
 
-def install_chrome():
+# def install_chrome():
 #     if not os.path.exists("/usr/bin/google-chrome"):
 #         subprocess.run([
 #             "wget", "-O", "/tmp/google-chrome-stable_current_amd64.deb",
@@ -87,9 +87,10 @@ from selenium.webdriver.chrome.options import Options
 
 def setup_driver(download_directory):
     chrome_options = Options()
-    chrome_options.add_argument("--headless")  # Run without GUI (optional)
+    # chrome_options.add_argument("--headless")  # Run without GUI (optional)
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("user-agent = your user agent")
     
     # Update the path to your Chrome binary
     chrome_binary_path = r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
@@ -100,6 +101,8 @@ def setup_driver(download_directory):
     # Set download preferences
     prefs = {
         "download.default_directory": download_directory,
+        "download.prompt_for_download": False,
+        "download.directory_upgrade": True,
         "safebrowsing.enabled": True
     }
     chrome_options.add_experimental_option("prefs", prefs)
