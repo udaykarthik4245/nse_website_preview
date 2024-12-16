@@ -75,31 +75,30 @@ else:
 # ----------------------------------------------------------------------------------------------------------------------------
 
 
-
-
-# Functions for Core Functionality
-
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
-
+import os
 
 def setup_driver(download_directory):
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")  # Run without GUI (optional)
+    # chrome_options.add_argument("--headless")  # Optional: For GUI-less mode
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
+  
     chrome_options.add_argument("user-agent = your user agent")
-    
-    # Update the path to your Chrome binary
-    chrome_binary_path = r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
-    if not os.path.exists(chrome_binary_path):
-        raise FileNotFoundError(f"Chrome binary not found at: {chrome_binary_path}")
-    chrome_options.binary_location = chrome_binary_path
 
-    # Set download preferences
-    prefs = {
+    # Dynamically check for Chrome binary
+    chrome_binary_paths = [
+        r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        r"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+    ]
+
+    for path in chrome_binary_paths:
+        if os.path.exists(path):
+            chrome_options.binary_location = path
+            break
+    else:
+        raise FileNotFoundError("Chrome binary not found in default locations.")
+
+     prefs = {
         "download.default_directory": download_directory,
         "download.prompt_for_download": False,
         "download.directory_upgrade": True,
@@ -107,9 +106,39 @@ def setup_driver(download_directory):
     }
     chrome_options.add_experimental_option("prefs", prefs)
 
-    # Initialize the WebDriver
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     return driver
+
+
+# Functions for Core Functionality
+
+
+
+# def setup_driver(download_directory):
+#     chrome_options = Options()
+#     # chrome_options.add_argument("--headless")  # Run without GUI (optional)
+#     chrome_options.add_argument("--no-sandbox")
+#     chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("user-agent = your user agent")
+    
+#     # Update the path to your Chrome binary
+#     chrome_binary_path = r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+#     if not os.path.exists(chrome_binary_path):
+#         raise FileNotFoundError(f"Chrome binary not found at: {chrome_binary_path}")
+#     chrome_options.binary_location = chrome_binary_path
+
+#     # Set download preferences
+    # prefs = {
+    #     "download.default_directory": download_directory,
+    #     "download.prompt_for_download": False,
+    #     "download.directory_upgrade": True,
+    #     "safebrowsing.enabled": True
+    # }
+#     chrome_options.add_experimental_option("prefs", prefs)
+
+#     # Initialize the WebDriver
+#     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+#     return driver
 
 
 
