@@ -79,7 +79,7 @@ import os
 
 def setup_driver(download_directory):
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")  # Optional: For GUI-less mode
+    chrome_options.add_argument("--headless")  # Optional: For GUI-less mode
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
   
@@ -120,7 +120,7 @@ def setup_driver(download_directory):
 #     # chrome_options.add_argument("--headless")  # Run without GUI (optional)
 #     chrome_options.add_argument("--no-sandbox")
 #     chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("user-agent = your user agent")
+    # chrome_options.add_argument("user-agent = your user agent")
     
 #     # Update the path to your Chrome binary
 #     chrome_binary_path = r"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
