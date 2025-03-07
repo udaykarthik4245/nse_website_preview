@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="\static\42.jpeg" type="image/x-icon">
+    <title>NSE Report Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #212020;
+            color: #4CAF50;
+            padding: 1rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header img {
+            height: 50px;
+            margin-right: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background-color: #444;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 1rem;
+        }
+        div {
+            font-weight: bold;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        div span,
+        div #nextDownload {
+            color: rgb(59, 169, 169);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            border: 1px solid #a7c4c3;
+            border-radius: 4px;
+        }
+
+        #start-date{
+            width: 97%;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #3a9f3d;
+        }
+
+        .links {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .links a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 380px) {
+            h1 {
+                font-size: 15px;
+                margin-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/45.webp') }}" alt="logo">
+        <!-- <img src="\static\images\45.webp" alt="logo"> -->
+        <h1>NSE Automated Report Downloader</h1>
+    </header>
+
+    <div class="container">
+        <form id="download-form">
+            <div>Next <span>NSE</span> download is scheduled for: <strong id="nextDownload"></strong></div>
+
+            <div>Select Date Range</div>
+            <input type="date" id="start-date" name="start-date" required>
+
+            <label for="data-format">Select Data Format</label>
+            <select id="data-format" name="data-format" required>
+                <option value="" disabled selected>Select file format</option>
+                <option value="zip">Zip</option>
+            </select>
+
+            <div>To download stock exchange reports, press the button below:</div>
+
+            <button type="button" id="download-btn">Download Data</button>
+        </form>
+
+        <div class="links">
+            <a href="/logs">View Logs</a>
+        </div>
+    </div>
+
+    <!-- <script src="\static\main.js"></script> -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+</body>
+</html>

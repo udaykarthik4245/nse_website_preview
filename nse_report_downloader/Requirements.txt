@@ -1,0 +1,23 @@
+selenium
+schedule
+flask
+os
+threading
+datetime
+logging
+zipfile
+shutil
+smtplib
+dotenv
+docx
+chrome Webdriver
+User Agent
+
+
+Downloads Report Folder Structure:
+        downloads/
+            └── merged_reports_YYYY-MM-DD.zip
+                ├── Reports(.csv)/   # for storing .csv files
+                ├── Reports(.dat)/   # for storing .dat files
+                └── [other files if any]   # for other files
+

@@ -1,0 +1,32 @@
+2024-11-12 15:14:22,527 - INFO - Download report requested.
+2024-11-12 15:14:22,529 - INFO - Downloading...
+2024-11-12 15:14:24,530 - INFO - Reports downloaded successfully!
+2024-11-12 15:14:37,830 - INFO - Download report requested.
+2024-11-12 15:14:37,832 - INFO - Downloading...
+2024-11-12 15:14:39,833 - INFO - Reports downloaded successfully!
+2024-11-12 15:18:59,150 - INFO - Download report requested.
+2024-11-12 15:18:59,151 - WARNING - Today's report is still downloading.
+2024-11-12 17:47:02,355 - INFO - Download report requested.
+2024-11-12 17:47:02,358 - WARNING - Today's report is still downloading.
+2024-11-12 17:48:08,790 - ERROR - Failed to download: BhavCopy_NSE_CM_0_0_0_20241112_F_0000.csv.zip
+2024-11-12 17:48:36,132 - INFO - Download report requested.
+2024-11-12 17:48:36,132 - INFO - Downloading...
+2024-11-12 17:48:38,136 - INFO - Reports downloaded successfully!
+2024-11-13 17:33:03,909 - INFO - Downloaded and Created Zip: merged_reports_2024-11-13.zip Successfully!
+2024-11-13 17:43:56,102 - INFO - Download report requested.
+2024-11-13 17:43:56,102 - INFO - Downloading...
+2024-11-13 17:43:58,117 - INFO - Reports downloaded successfully!
+2024-11-14 17:21:29,641 - INFO - Download report requested.
+2024-11-14 17:21:29,641 - WARNING - Today's report is still downloading.
+2024-11-14 17:22:23,984 - INFO - Downloaded and Created Zip: merged_reports_2024-11-14.zip Successfully!
+2025-03-07 23:23:23,762 - INFO - Download report requested.
+2025-03-07 23:23:23,780 - WARNING - Report for future dates cannot be downloaded.
+2025-03-07 23:23:38,876 - INFO - Download report requested.
+2025-03-07 23:24:00,105 - INFO - Download report requested.
+2025-03-07 23:24:00,107 - WARNING - No report available for 2025-03-06.
+2025-03-07 23:24:16,164 - INFO - Download report requested.
+2025-03-07 23:24:38,307 - INFO - Download report requested.
+2025-03-07 23:24:38,307 - WARNING - No report available for 2025-03-06.
+2025-03-07 23:33:37,491 - INFO - Download report requested.
+2025-03-07 23:33:37,499 - WARNING - No report available for 2025-03-06.
+2025-03-07 23:33:52,427 - INFO - Download report requested.
